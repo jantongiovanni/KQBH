@@ -4,6 +4,7 @@ module.exports = async function() {
 
   TrackPlayer.addEventListener('remote-play', () => {
     TrackPlayer.play()
+    console.log("play");
   })
 
   TrackPlayer.addEventListener('remote-pause', () => {
@@ -20,6 +21,7 @@ module.exports = async function() {
 
   TrackPlayer.addEventListener('remote-stop', () => {
     TrackPlayer.destroy()
+    console.log("stop/destroy");
   });
 
 };

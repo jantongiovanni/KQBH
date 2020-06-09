@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -16,34 +16,49 @@ import {
   StatusBar,
   TouchableWithoutFeedback
   } from 'react-native';
-import TrackPlayer, { usePlaybackState } from "react-native-track-player";
+  import TrackPlayer, { usePlaybackState } from "react-native-track-player";
 
+//const playbackState = usePlaybackState();
+//useEffect(() => {
+   start();
+ //}, []);
 
-TrackPlayer.setupPlayer().then(async () => {
-  TrackPlayer.add({
-      id: "1",
-      url: "http://ednixon.com:8170/stream",
-      title: "KQBH",
-      artist: "Unknown",
-    })
-  TrackPlayer.updateOptions({
-    stopWithApp: true,
-    capabilities: [
-      TrackPlayer.CAPABILITY_PLAY,
-      TrackPlayer.CAPABILITY_STOP
-    ],
-    compactCapabilities: [
-      TrackPlayer.CAPABILITY_PLAY,
-    ]
-  });
-  }).catch(error => {
-console.log('SETUP PLAYER', error)
-})
+async function start() {
+  console.log("start");
+  TrackPlayer.setupPlayer().then(async () => {
+    TrackPlayer.add({
+        id: "1",
+        url: "http://ednixon.com:8170/stream",
+        title: "KQBH",
+        artist: "Unknown",
+      })
+    TrackPlayer.updateOptions({
+      stopWithApp: true,
+      capabilities: [
+        TrackPlayer.CAPABILITY_PLAY,
+        TrackPlayer.CAPABILITY_STOP,
+        TrackPlayer.CAPABILITY_PAUSE,
+      ],
+      compactCapabilities: [
+        TrackPlayer.CAPABILITY_PLAY,
+        TrackPlayer.CAPABILITY_STOP,
+        TrackPlayer.CAPABILITY_PAUSE,
+      ]
+    });
+    }).catch(error => {
+  console.log('SETUP PLAYER', error)
+  })
+}
 
   async function togglePlayback() {
+    if(TrackPlayer.getQueue()){
+    console.log("station is queued and ready to play");
     TrackPlayer.play().then(function(){
       console.log("Track play");
       });
+    } else {
+      console.log("station is not queued and needs to be set up");
+    }
    }
 
   async function getQueue() {
@@ -72,6 +87,21 @@ const App: () => React$Node = () => {
     </>
   );
 };
+
+function getStateName(state) {
+  switch (state) {
+    case TrackPlayer.STATE_NONE:
+      return "None";
+    case TrackPlayer.STATE_PLAYING:
+      return "Playing";
+    case TrackPlayer.STATE_PAUSED:
+      return "Paused";
+    case TrackPlayer.STATE_STOPPED:
+      return "Stopped";
+    case TrackPlayer.STATE_BUFFERING:
+      return "Buffering";
+  }
+}
 
 const styles = StyleSheet.create({
   button: {
