@@ -21,6 +21,7 @@
     "react-native-screens": "^2.8.0",
     "react-native-shared-element": "^0.7.0",
     "react-native-swift": "^1.2.3",
+    "react-native-touchable-scale": "^2.1.1",
     "react-native-track-player": "^1.2.3",
     "react-navigation-shared-element": "^5.0.0-alpha1"
   },

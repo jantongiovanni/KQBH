@@ -1,9 +1,13 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
+ * KQBH 101.5 is a Community-Built FM radio station with studios in Boyle Heights, Los Angeles.
+ * https://www.lpfm.la/
  *
+ * Mobile app developed by Joe Antongiovanni
+ * https://github.com/jantongiovanni
+ */
+
+ /**
  * @format
- * @flow strict-local
  */
 import 'react-native-gesture-handler';
 import React, { useEffect } from 'react';
@@ -22,7 +26,6 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import MainScreen from './react/screens/MainScreen';
 import DetailScreen from './react/screens/DetailScreen';
-
 
 const Stack = createSharedElementStackNavigator();
 
