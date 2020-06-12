@@ -1,18 +1,26 @@
-import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import * as React from 'react';
+import { Dimensions, View, StyleSheet, Text, Image } from 'react-native';
 
-import SharedElement from 'react-navigation-shared-element';
-//import TouchableScale from 'react-native-touchable-scale';
+import { SharedElement } from 'react-navigation-shared-element';
 
-const DetailScreen = () => {
+const DetailScreen = props => {
+const {width, height} = Dimensions.get('window');
 
-return (
-  <View>
-    <Text> I am the detail screen </Text>
-  </View>
+const {data} = props.route.params
 
-)
-
-}
+  return (
+    <View style={{flex:1}}>
+      <View>
+        <SharedElement id={`item.${data.id}.photo`}>
+          <Image
+          resizeMode='cover'
+          source={data.image}
+          style={{width:width, height:width}}
+          />
+        </SharedElement>
+      </View>
+    </View>
+  );
+ };
 
 export default DetailScreen;

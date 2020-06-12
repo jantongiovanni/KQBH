@@ -35,7 +35,7 @@ const App = ({navigation}) => {
       <Stack.Navigator
       initialRouteName="MainScreen"
       screenOptions={{
-
+        headerShown: false
         }}
         >
         <Stack.Screen
@@ -53,6 +53,20 @@ const App = ({navigation}) => {
               }
             }
           })}
+
+          sharedElementsConfig = {(route) => {
+            const {data} = route.params
+            return [
+              {
+                id:`item.${data.id}.photo`,
+                animation: 'move',
+                resize: 'clip',
+                align: 'center-top'
+              }
+            ]
+
+            }}
+
         />
       </Stack.Navigator>
     </NavigationContainer>
