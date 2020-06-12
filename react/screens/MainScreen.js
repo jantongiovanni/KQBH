@@ -11,14 +11,14 @@ const MainScreen = ({navigation}) => {
 const {width, height} = Dimensions.get('window');
 
 return (
-  <View style = {{flex:1}}>
+  <View style = {{flex:1, padding:10}}>
     <FlatList
     numColumns = {2}
     data = {dummydata}
     keyExtractor = {(item, index) => index.toString()}
     renderItem = {({item}) => {
       return (
-        <View style={{flex:1}}>
+        <View style={{flex:1, margin: 10}}>
          <TouchableScale
          activeScale={0.9}
          tension={50}
@@ -30,7 +30,7 @@ return (
             <Image
             resizeMode='cover'
             source={item.image}
-            style={{width: width/2, height: width/2, borderRadius: width/2}}
+            style={{width: (width-60)/2, height: (width-60)/2, borderRadius: width/2, justifyContent: 'center', alignItems: 'center'}}
             />
            </SharedElement>
          </TouchableScale>
