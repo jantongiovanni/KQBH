@@ -1,5 +1,6 @@
-import * as React from 'react';
-import { Dimensions, View, StyleSheet, Text, Image } from 'react-native';
+import React from 'react';
+import { Dimensions, View, StyleSheet, Text, Image, BackHandler } from 'react-native';
+import TouchableScale from 'react-native-touchable-scale';
 
 import { SharedElement } from 'react-navigation-shared-element';
 
@@ -18,6 +19,7 @@ const {data} = props.route.params
           style={{width:width, height:width}}
           />
         </SharedElement>
+
       </View>
     </View>
   );

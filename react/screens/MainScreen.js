@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Image, FlatList, Dimensions, View, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native';
+import React from 'react';
+import { Image, FlatList, Dimensions, View, StyleSheet, Text, TouchableWithoutFeedback, BackHandler } from 'react-native';
 
 import { SharedElement } from 'react-navigation-shared-element';
 import TouchableScale from 'react-native-touchable-scale';
@@ -13,6 +13,7 @@ const {width, height} = Dimensions.get('window');
 return (
   <View style = {{flex:1}}>
     <FlatList
+    numColumns = {2}
     data = {dummydata}
     keyExtractor = {(item, index) => index.toString()}
     renderItem = {({item}) => {
@@ -29,7 +30,7 @@ return (
             <Image
             resizeMode='cover'
             source={item.image}
-            style={{width: width, height: width}}
+            style={{width: width/2, height: width/2, borderRadius: width/2}}
             />
            </SharedElement>
          </TouchableScale>
