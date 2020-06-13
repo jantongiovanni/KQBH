@@ -25,6 +25,7 @@
     "react-native-swift": "^1.2.3",
     "react-native-touchable-scale": "^2.1.1",
     "react-native-track-player": "^1.2.3",
+    "react-native-vector-icons": "^6.6.0",
     "react-navigation-shared-element": "^5.0.0-alpha1"
   },
   "devDependencies": {
